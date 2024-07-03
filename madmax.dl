@@ -225,3 +225,78 @@ OverflowLoopIterator(castStmt) :-
   PossibleLoopOverflow(castStmt, loop),
   (OtherDynamicBound(loop, _) ; StorageDynamicBound(loop, _)).
 
+.decl FindSINK(stmt: Statement, op: Opcode, sink: Variable)
+
+VULNERABILITY_DESCRIPTION(
+    FindSINK, "???",
+    "????"
+)
+
+FindSINK(stmt, op, sink) :-
+  CALL(stmt, _, sink, price, _, _, _, _, _),
+  Variable_Value(price, value),
+  value != "0x0",
+  op = "CALL".
+
+FindSINK(stmt, op, sink) :-
+  DELEGATECALL(stmt, _, sink, _, _, _, _, _),
+  op = "DELEGATECALL".
+
+FindSINK(stmt, op, sink) :-
+  SELFDESTRUCT(stmt, sink),
+  op = "SELFDESTRUCT".
+
+
+.decl FindSOURCE(stmt: Statement, op: Opcode, source: Variable)
+
+VULNERABILITY_DESCRIPTION(
+    FindSOURCE, "???",
+    "????"
+)
+
+FindSOURCE(stmt, op, source) :-
+  (op = "ORIGIN"; op = "CALLER"; op = "CALLVALUE"; op = "CALLDATALOAD"; op = "CALLDATASIZE"; op = "CALLDATACOPY"; op = "EXTCODESIZE"; op = "EXTCODECOPY"; op = "SLOAD"),
+  Statement_Opcode(stmt, op),
+  Statement_Defines(stmt, source, _).
+
+.decl TaintedCALL(sink: Variable, source: Variable)
+
+VULNERABILITY_DESCRIPTION(
+    TaintedCALL, "???",
+    "????"
+)
+
+TaintedCALL(sink, source) :-
+  FindSINK(_,op,sink),
+  FindSOURCE(stmt,_,source),
+  DataFlows(source,sink),
+  StatementInAccessibleFunction(stmt,_),
+  op = "CALL".
+
+.decl TaintedDELEGATECALL(sink: Variable, source: Variable)
+
+VULNERABILITY_DESCRIPTION(
+    TaintedDELEGATECALL, "???",
+    "????"
+)
+
+TaintedDELEGATECALL(sink, source) :-
+  FindSINK(_,op,sink),
+  FindSOURCE(stmt,_,source),
+  DataFlows(source,sink),
+  StatementInAccessibleFunction(stmt,_),
+  op = "DELEGATECALL".
+
+.decl TaintedSELFDESTRUCT(sink: Variable, source: Variable)
+
+VULNERABILITY_DESCRIPTION(
+    TaintedSELFDESTRUCT, "???",
+    "????"
+)
+
+TaintedSELFDESTRUCT(sink, source) :-
+  FindSINK(_,op,sink),
+  FindSOURCE(stmt,_,source),
+  DataFlows(source,sink),
+  StatementInAccessibleFunction(stmt,_),
+  op = "SELFDESTRUCT".
