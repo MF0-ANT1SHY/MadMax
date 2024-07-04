@@ -196,6 +196,23 @@ WalletGriefing(callStmt, arrayId) :-
   CallSuccessControlsException(callStmt, throwStmt),
   StatementInStructuredLoop(throwStmt, loop).
 
+.decl WalletGriefing_uni(x:Statement, source: Variable)
+
+VULNERABILITY_DESCRIPTION(
+    WalletGriefing_uni, "DoS (Wallet Griefing)",
+    "Transfer at <0.keystatement> may be susceptible to DoS from griefing wallet stored in <1.storage>"
+)
+ 
+WalletGriefing_uni(callStmt, source) :-
+  FindSOURCE(stmt, _, source),
+  StatementInAccessibleFunction(stmt,_),
+  DataFlows(source, sink),
+  CALL(callStmt, _, sink, _, _, _, _, _, _),
+  CallAddressFromStorage(_, _, callStmt),
+  StatementInStructuredLoop(callStmt, loop),
+  CallSuccessControlsException(callStmt, throwStmt),
+  StatementInStructuredLoop(throwStmt, loop).
+
 .decl UnboundedMassOp(x:Statement, y:Statement)
 
 VULNERABILITY_DESCRIPTION(
