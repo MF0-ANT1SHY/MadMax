@@ -213,6 +213,22 @@ WalletGriefing_uni(callStmt, source) :-
   CallSuccessControlsException(callStmt, throwStmt),
   StatementInStructuredLoop(throwStmt, loop).
 
+.decl UnboundedMassOp_uni(x:Variable, y:Variable)
+
+VULNERABILITY_DESCRIPTION(
+    UnboundedMassOp_uni, "DoS (Unbounded Operation)",
+    "Array iterator at <1.keystatement> may be susceptible to DoS by increasing storage requirements at <0.statement>"
+)
+
+UnboundedMassOp_uni(condVar, source) :-
+  StorageDynamicBound(loop, _),
+  LoopExitCond(condVar, loop),
+  !PossiblyResumableLoop(loop),
+  FindSOURCE(stmt, _, source),
+  StatementInAccessibleFunction(stmt,_),
+  DataFlows(source,condVar).
+
+
 .decl UnboundedMassOp(x:Statement, y:Statement)
 
 VULNERABILITY_DESCRIPTION(
