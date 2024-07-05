@@ -1,0 +1,14 @@
+0x0	__function_selector__
+0xa3	fallback()
+0xa3	batchLock_63efZf()
+0x2e3	MULTIPLIER()
+0x30a	currentReceiverIndex()
+0x31f	getDeposits(address)
+0x41e	getDeposit(uint256)
+0x45e	TECH_PERCENT()
+0x473	getQueueLength()
+0x488	PROMO_PERCENT()
+0x49d	getDepositsCount(address)
+0x4be	MAX_DEPOSIT()
+0x4d3	MIN_DEPOSIT()
+0x4e8	0x4e8

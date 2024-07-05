@@ -1,0 +1,9 @@
+0x0	__function_selector__
+0x78	fallback()
+0x78	batchLock_63efZf()
+0x7a	gamesPlayed(uint256)
+0xe4	kill()
+0xf9	play(uint256)
+0x111	ownerAddr()
+0x166	lastPlayed()
+0x18f	betPrice()

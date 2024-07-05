@@ -1,0 +1,8 @@
+0x0	fallback()
+0x0	batchLock_63efZf()
+0x13af4035	setOwner(address)
+0x9003adfe	collectedFees()
+0xa2f9eac6	persons(uint256)
+0xa60f3588	payoutIdx()
+0xb69ef8a8	balance()
+0xd014c01f	enter(address)

@@ -1,0 +1,8 @@
+0x0	fallback()
+0x0	batchLock_63efZf()
+0x382cf0a6	gamesPlayed(uint256)
+0x41c0e1b5	kill()
+0x6898f82b	play(uint256)
+0x9c675eaa	ownerAddr()
+0xc5339132	lastPlayed()
+0xcfd8a175	betPrice()

@@ -1,0 +1,8 @@
+0x6d70x130	transfer(address,uint256)
+0x6d70x51e	transfer(address,uint256)
+0x117b0x152a	transferFrom(address,address,uint256)
+0x117b0x1530	transferFrom(address,address,uint256)
+0x117b0x1536	transferFrom(address,address,uint256)
+0x10860x152a	transferFrom(address,address,uint256)
+0x10860x1530	transferFrom(address,address,uint256)
+0x10860x1536	transferFrom(address,address,uint256)

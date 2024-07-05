@@ -1,0 +1,14 @@
+0x0	__function_selector__
+0x99	fallback()
+0x99	batchLock_63efZf()
+0x9e	totalPaidOut(address)
+0xeb	index()
+0x114	totalValue(address)
+0x161	buyIns(uint256)
+0x1cb	payout()
+0x1e0	purchase()
+0x1ea	totalInvested(address)
+0x237	contractOwner()
+0x28c	contractTotalInvested()
+0x9b9	0x9b9
+0x9f4	0x9f4
